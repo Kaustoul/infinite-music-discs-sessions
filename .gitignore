@@ -22,6 +22,7 @@ infinite_music_discs_dp/*
 infinite_music_discs_rp/*
 src/infinite_music_discs_dp/*
 src/infinite_music_discs/rp/*
+entry_list.json
 
 imd-tmp/*
 src/tmp/*
@@ -46,3 +47,4 @@ tmp/*
 .environment_setup_complete
 build/tmp/*
 build/.environment_setup_complete
+
