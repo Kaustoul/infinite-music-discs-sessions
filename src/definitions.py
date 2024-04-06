@@ -309,6 +309,19 @@ class DiscListContents:
     @property
     def internal_names(self):
         return [entry.internal_name for entry in self.entries]
+    
+    def to_json(self):
+        return [
+            {
+                "texture_file": entry.texture_file,
+                "track_file": entry.track_file,
+                "title": entry.title,
+                "internal_name": entry.internal_name,
+                "custom_model_data": entry.custom_model_data,
+                "length": entry.length
+            }
+            for entry in self.entries
+        ]
 
 #dataclass to store data to be passed to multiprocessing
 #  workers while converting files to ogg

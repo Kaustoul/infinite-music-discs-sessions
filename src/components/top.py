@@ -3,6 +3,8 @@
 #Infinite Music Discs top-level GUI components module
 #Generation tool, datapack design, and resourcepack design by link2_thepast
 
+import json
+
 from typing import Any
 
 from PySide6 import QtCore
@@ -14,7 +16,7 @@ import src.generator.factory as generator_factory
 from src.definitions import Status, IMDException, DiscListContents
 from src.definitions import CSS_STYLESHEET
 
-from src.definitions import Assets, Constants, StyleProperties, StatusMessageDict, StatusStickyDict, GenerateButtonColorsDict
+from src.definitions import Assets, Constants, StyleProperties, StatusMessageDict, StatusStickyDict, GenerateButtonColorsDict, DiscListEntryContents
 from src.components.common import QRepolishMixin
 from src.components.settings_tab import SettingsList
 from src.components.tracks_tab import DiscList
@@ -485,6 +487,8 @@ class CentralWidget(QtWidgets.QWidget):
         self._status = StatusDisplayWidget('', btnFrame, self)
         self._parent.resized.connect(self._status.setBasePos)
 
+        self.entryListFromJson()
+
         #arrange draw order
         btnFrame.raise_()
         self._status.raise_()
@@ -525,7 +529,27 @@ class CentralWidget(QtWidgets.QWidget):
 
         self._thread.start()
 
-
+    def getEntryList(self):
+        return self._discList.getDiscEntries()
+    
+    def entryListFromJson(self):
+        try:
+            with open('entry_list.json', 'r') as f:
+                list = json.load(f)
+                for data in list:
+                    entry = DiscListEntryContents(
+                        texture_file=data["texture_file"], 
+                        track_file=data["track_file"], 
+                        title=data["title"], 
+                        internal_name=data["internal_name"], 
+                        length=data["length"], 
+                        custom_model_data=data["custom_model_data"]
+                    )
+                    
+                    self._discList.addDiscEntry(entry)
+                print("Data loaded successfully")
+        except FileNotFoundError:
+            print("No previous data found")
 
 #worker object that generates the datapack/resourcepack in a separate QThread
 class GeneratePackWorker(QtCore.QObject):

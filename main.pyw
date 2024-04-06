@@ -21,6 +21,7 @@ import ctypes
 import platform
 import logging
 import multiprocessing
+import json
 
 from PySide6 import QtCore
 from PySide6 import QtGui
@@ -34,13 +35,15 @@ from src.components.top import CentralWidget
 class UI(QtWidgets.QMainWindow):
     resized = QtCore.Signal()
     moved = QtCore.Signal()
+    central = None
 
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle(Constants.APP_TITLE)
         self.setWindowIcon(QtGui.QIcon(Assets.APP_ICON))
-        self.setCentralWidget( CentralWidget(self) )
+        self.central = CentralWidget(self)
+        self.setCentralWidget( self.central )
 
     def resizeEvent(self, event):
         super().resizeEvent(event)
@@ -50,6 +53,14 @@ class UI(QtWidgets.QMainWindow):
         super().moveEvent(event)
         self.moved.emit()
 
+    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+        self.saveData()
+        return super().closeEvent(event)
+    
+    def saveData(self):
+        entry_list = self.central.getEntryList()
+        with open('entry_list.json', 'w') as f:
+            json.dump(entry_list.to_json(), f)
 
 
 def except_hook(cls, exception, traceback):
