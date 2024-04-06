@@ -53,9 +53,9 @@ class UI(QtWidgets.QMainWindow):
         super().moveEvent(event)
         self.moved.emit()
 
-    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+    def closeEvent(self, event: QtGui.QCloseEvent):
         self.saveData()
-        return super().closeEvent(event)
+        super().closeEvent(event)
     
     def saveData(self):
         entry_list = self.central.getEntryList()
