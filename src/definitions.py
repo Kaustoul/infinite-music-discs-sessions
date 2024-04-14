@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import List, Any
 from dataclasses import dataclass, field
 
-from PySide6.QtGui import QColor
+# from PySide6.QtGui import QColor
 
 import build.version as version
 
@@ -365,54 +365,54 @@ SettingsListContents = [
 
 #Style definitions
 GenerateButtonColorsDict = {
-    'background-color': {
-        'base':     QColor(32,32,32),
-        'hover':    QColor(32,32,32),
-        'pressed':  QColor(32,32,32),
-        'disabled': QColor(32,32,32)
-    },
-
-    'border-outer-color': {
-        'base':     QColor(0,0,0),
-        'hover':    QColor(0,0,0),
-        'pressed':  QColor(255,255,255),
-        'disabled': QColor(0,0,0)
-    },
-
-    'border-left-color': {
-        'base':     QColor(49,108,66),
-        'hover':    QColor(49,108,66),
-        'pressed':  QColor(49,108,66),
-        'disabled': QColor(49,108,66)
-    },
-
-    'border-top-color': {
-        'base':     QColor(98,202,85),
-        'hover':    QColor(98,202,85),
-        'pressed':  QColor(32,75,45),
-        'disabled': QColor(65,136,57)
-    },
-
-    'border-right-color': {
-        'base':     QColor(49,108,66),
-        'hover':    QColor(49,108,66),
-        'pressed':  QColor(49,108,66),
-        'disabled': QColor(49,108,66)
-    },
-
-    'border-bottom-color': {
-        'base':     QColor(32,75,45),
-        'hover':    QColor(32,75,45),
-        'pressed':  QColor(74,162,53),
-        'disabled': QColor(22,52,31)
-    },
-
-    'button-color': {
-        'base':     QColor(62,139,78),
-        'hover':    QColor(68,150,88),
-        'pressed':  QColor(62,140,78),
-        'disabled': QColor(41,93,52)
-    }
+#    'background-color': {
+#        'base':     QColor(32,32,32),
+#        'hover':    QColor(32,32,32),
+#        'pressed':  QColor(32,32,32),
+#        'disabled': QColor(32,32,32)
+#    },
+#
+#    'border-outer-color': {
+#        'base':     QColor(0,0,0),
+#        'hover':    QColor(0,0,0),
+#        'pressed':  QColor(255,255,255),
+#        'disabled': QColor(0,0,0)
+#    },
+#
+#    'border-left-color': {
+#        'base':     QColor(49,108,66),
+#        'hover':    QColor(49,108,66),
+#        'pressed':  QColor(49,108,66),
+#        'disabled': QColor(49,108,66)
+#    },
+#
+#    'border-top-color': {
+#        'base':     QColor(98,202,85),
+#        'hover':    QColor(98,202,85),
+#        'pressed':  QColor(32,75,45),
+#        'disabled': QColor(65,136,57)
+#    },
+#
+#    'border-right-color': {
+#        'base':     QColor(49,108,66),
+#        'hover':    QColor(49,108,66),
+#        'pressed':  QColor(49,108,66),
+#        'disabled': QColor(49,108,66)
+#    },
+#
+#    'border-bottom-color': {
+#        'base':     QColor(32,75,45),
+#        'hover':    QColor(32,75,45),
+#        'pressed':  QColor(74,162,53),
+#        'disabled': QColor(22,52,31)
+#    },
+#
+#    'button-color': {
+#        'base':     QColor(62,139,78),
+#        'hover':    QColor(68,150,88),
+#        'pressed':  QColor(62,140,78),
+#        'disabled': QColor(41,93,52)
+#    }
 }
 
 CSS_STYLESHEET = """
